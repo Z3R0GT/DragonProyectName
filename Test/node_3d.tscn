@@ -1,0 +1,34 @@
+[gd_scene load_steps=2 format=3 uid="uid://8a3hng5lgitf"]
+
+[ext_resource type="Texture2D" uid="uid://biiw3lp1og5p5" path="res://icon.svg" id="1_gippo"]
+
+[node name="ColorRect" type="ColorRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ItemList" type="ItemList" parent="."]
+layout_mode = 0
+offset_right = 1137.0
+offset_bottom = 645.0
+select_mode = 1
+max_text_lines = 2
+item_count = 2
+max_columns = 2
+same_column_width = true
+fixed_column_width = 131
+icon_mode = 0
+item_0/text = "Holaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+item_0/icon = ExtResource("1_gippo")
+item_1/text = "xd"
+item_1/icon = ExtResource("1_gippo")
