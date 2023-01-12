@@ -1,0 +1,140 @@
+[gd_scene load_steps=12 format=3 uid="uid://bgck54m1m6mnb"]
+
+[ext_resource type="Script" path="res://Scenes/ScenePlayerEnviroment/Enemy_BodyOnBody.gd" id="1_c6cgc"]
+[ext_resource type="Script" path="res://addons/progressBar3D/ProgressBar3D.gd" id="2_unsvb"]
+[ext_resource type="Texture2D" uid="uid://ccrswk8d2foa3" path="res://Extras/MapMarker/heroe.png" id="3_xk6bt"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jqjyi"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_kppyx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7fuek"]
+albedo_color = Color(0.380392, 0.0235294, 0.0392157, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ypg2l"]
+material = SubResource("StandardMaterial3D_7fuek")
+
+[sub_resource type="Animation" id="Animation_e2qrd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D3:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.272309, 3.09848, 1.5824)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D3:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.525082, 0.758016, 0.0794476)]
+}
+
+[sub_resource type="Animation" id="Animation_wjv7k"]
+resource_name = "attack"
+length = 2.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D3:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.3, 2.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.525082, 0.229386, 0.0794476), Vector3(0.525082, 0.321753, 0.0794476), Vector3(0.525082, 0.321753, -0.480221)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D3:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.3),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.3522, 2.90265, 1.33426)]
+}
+
+[sub_resource type="Animation" id="Animation_wf81i"]
+resource_name = "walk"
+length = 3.0
+loop_mode = 1
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D3:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.870924, 3.0771, 1.52144), Vector3(-0.272309, 3.09848, 1.5824)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j4oid"]
+_data = {
+"RESET": SubResource("Animation_e2qrd"),
+"attack": SubResource("Animation_wjv7k"),
+"walk": SubResource("Animation_wf81i")
+}
+
+[node name="enemy_body_3d" type="CharacterBody3D" groups=["enemi"]]
+transform = Transform3D(0.393, 0, 0, 0, 0.29, 0, 0, 0, 0.372, 0, 0, 0)
+script = ExtResource("1_c6cgc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_jqjyi")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_kppyx")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(-6.10211e-08, 0, 0.306267, 0, 0.1979, 0, -1.396, 0, -1.33874e-08, 0.0110945, 0.546452, -0.627277)
+mesh = SubResource("BoxMesh_ypg2l")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(2.01947e-06, 0.0599483, 0.00830226, 1.25201, -0.000670549, 0.0537913, 0.349944, 0.00239871, -0.192452, 0.525082, 0.758016, 0.0794476)
+mesh = SubResource("BoxMesh_ypg2l")
+skeleton = NodePath("../..")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MeshInstance3D"]
+libraries = {
+"": SubResource("AnimationLibrary_j4oid")
+}
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="HealtBar" type="Node3D" parent="."]
+transform = Transform3D(0.37396, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.39368, 0)
+script = ExtResource("2_unsvb")
+outline_color = Color(0, 0, 0, 0)
+size = Vector3(1, 0.175, 0.1)
+keep_empty_bar = true
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, -0.000232768, 0.521096, -0.310223)
+
+[node name="map_marker" type="Sprite3D" parent="."]
+transform = Transform3D(4, 0, 0, 0, -1.74846e-07, -4, 0, 4, -1.74846e-07, 0, 3.9, 0)
+layers = 256
+texture = ExtResource("3_xk6bt")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

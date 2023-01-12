@@ -1,0 +1,54 @@
+[gd_scene load_steps=8 format=3 uid="uid://b74ev64d6w11s"]
+
+[ext_resource type="Script" path="res://Scenes/ScenePlayerEnviroment/Enemy_Shotter.gd" id="1_2yxib"]
+[ext_resource type="Script" path="res://addons/progressBar3D/ProgressBar3D.gd" id="2_p1ilx"]
+[ext_resource type="Texture2D" uid="uid://dhuw8shp3at0j" path="res://Extras/MapMarker/enemi.png" id="3_t2hmk"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8se5w"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_3jrff"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lx2ux"]
+albedo_color = Color(0.380392, 0.0235294, 0.0392157, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2wvm7"]
+material = SubResource("StandardMaterial3D_lx2ux")
+
+[node name="EnemiLong" type="CharacterBody3D"]
+transform = Transform3D(0.393, 0, 0, 0, 0.29, 0, 0, 0, 0.372, 0, 0, 0)
+script = ExtResource("1_2yxib")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_8se5w")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_3jrff")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(-8.93898e-08, 0, 0.448, 0, 0.29, 0, -2.045, 0, -1.95827e-08, 0.0110945, 0.546452, -0.627277)
+mesh = SubResource("BoxMesh_2wvm7")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(2.54453, 0, 0, 0, 0.296617, -3.69938, 0, 17.6342, 0.0378163, -0.00713314, 0.360675, -0.414202)
+
+[node name="HealtBar" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.80723, 0)
+script = ExtResource("2_p1ilx")
+size = Vector3(1, 0.175, 0.1)
+keep_empty_bar = true
+
+[node name="pivote" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.490425, 0.668681)
+
+[node name="TimeRecoil" type="Timer" parent="."]
+
+[node name="TimeShot" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="map_marker" type="Sprite3D" parent="."]
+transform = Transform3D(4, 0, 0, 0, -1.74846e-07, -4, 0, 4, -1.74846e-07, 0, 3.95656, 0)
+layers = 256
+texture = ExtResource("3_t2hmk")
+
+[connection signal="timeout" from="TimeRecoil" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="TimeShot" to="." method="_on_time_shot_timeout"]

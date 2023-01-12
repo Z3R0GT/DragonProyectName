@@ -1,0 +1,91 @@
+[gd_scene load_steps=8 format=3 uid="uid://ci26u06peq2oi"]
+
+[ext_resource type="Script" path="res://Scripts/Effects/Portal.gd" id="1_4sxjo"]
+[ext_resource type="Script" path="res://Scripts/Effects/Portal-Sub.gd" id="3_6tiag"]
+[ext_resource type="AudioStream" uid="uid://2tsr1cdiyx0j" path="res://Assets/Music/Enviroment/y2mate.com - Sonido de magia   Portal o entrada.mp3" id="4_lnlr5"]
+[ext_resource type="AudioStream" uid="uid://bfa6qt61bvxxi" path="res://Assets/Music/Enviroment/y2mate.com - Magic Portal Effect 1.mp3" id="5_vpedv"]
+[ext_resource type="PackedScene" uid="uid://gjnneu7d3isy" path="res://Scenes/Enviroments/MagicPortal.tscn" id="6_6ihjh"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u3kg1"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_yysul"]
+
+[node name="Portal" type="Node3D"]
+transform = Transform3D(0.005, 0, 0, 0, 0.005, 0, 0, 0, 0.005, 0, 0, 0)
+script = ExtResource("1_4sxjo")
+TempEspera = 5
+
+[node name="MagicPortal" parent="." instance=ExtResource("6_6ihjh")]
+transform = Transform3D(0.005, 0, 0, 0, 0.005, 0, 0, 0, 0.005, 0, 0, 0)
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 2.34061, -0.325633)
+shape = SubResource("BoxShape3D_u3kg1")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="UI"]
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("3_6tiag")
+
+[node name="HeltPlayer" type="TextureProgressBar" parent="UI/Control"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -8.0
+offset_top = -49.0
+offset_right = 270.0
+offset_bottom = -9.0
+grow_vertical = 0
+scale = Vector2(0.160001, 0.33413)
+value = 1.0
+nine_patch_stretch = true
+texture_under = SubResource("ImageTexture_yysul")
+texture_progress = SubResource("ImageTexture_yysul")
+tint_under = Color(0.282353, 0.282353, 0.282353, 1)
+tint_progress = Color(0.54902, 0, 0.0862745, 1)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="lifeTime" type="Timer" parent="."]
+
+[node name="audio" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_lnlr5")
+attenuation_model = 1
+bus = &"SFX"
+
+[node name="TempDead" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_vpedv")
+attenuation_model = 1
+unit_size = 33.05
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(168.002, 0, 108.515, 0, 200, 0, -108.515, 0, 168.002, 0, 2.55338, 0)
+light_energy = 9.444
+light_volumetric_fog_energy = 4.778
+light_size = 0.346
+shadow_enabled = true
+omni_range = 6.3
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="lifeTime" to="." method="_on_life_time_timeout"]

@@ -1,0 +1,39 @@
+[gd_scene load_steps=2 format=3 uid="uid://c7al27lvfjdio"]
+
+[ext_resource type="Script" path="res://Scripts/GamePlay/CameraMiniMap.gd" id="1_pvtvk"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = 966.0
+offset_top = 2.0
+offset_right = 1116.0
+offset_bottom = 152.0
+scale = Vector2(1.252, 1)
+color = Color(0, 0, 0, 1)
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+offset_left = 964.0
+offset_top = 4.0
+offset_right = 1114.0
+offset_bottom = 154.0
+scale = Vector2(1.252, 1)
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(150, 150)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 13.0207, 0)
+cull_mask = 256
+projection = 1
+current = true
+size = 20.0
+script = ExtResource("1_pvtvk")
+target = NodePath("../../../../../CharacterBody3D")

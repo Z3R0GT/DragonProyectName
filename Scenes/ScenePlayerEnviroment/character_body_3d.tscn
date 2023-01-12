@@ -1,0 +1,297 @@
+[gd_scene load_steps=16 format=3 uid="uid://bu878rp13pbfc"]
+
+[ext_resource type="Script" path="res://Scenes/ScenePlayerEnviroment/character_body_3d.gd" id="1_yh23r"]
+[ext_resource type="PackedScene" uid="uid://dbx1i8xg3wg8" path="res://Assets/Models/dragon_with_animations.tscn" id="2_6t54t"]
+[ext_resource type="Script" path="res://Scripts/GamePlay/Pivote_character.gd" id="2_v441b"]
+[ext_resource type="Script" path="res://Scripts/GUI/UI_Player.gd" id="4_1580u"]
+[ext_resource type="FontFile" uid="uid://cdeoel5armh63" path="res://Assets/Fonts/TheWildBreathOfZelda-15Lv.ttf" id="5_y37mu"]
+[ext_resource type="Texture2D" uid="uid://bt1wyo3ad1t3q" path="res://Scenes/ScenePlayerEnviroment/crosshair.png" id="6_a0du5"]
+[ext_resource type="Texture2D" uid="uid://b4vf404h5ysbg" path="res://Extras/MapMarker/player.png" id="6_yjrd2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p0pym"]
+size = Vector3(0.110874, 0.707257, 0.229612)
+
+[sub_resource type="Animation" id="Animation_0mm5r"]
+resource_name = "Changed_1ts"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.185469, -0.852194), Vector3(0, 0.0603247, 0.116524)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D/Ball:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.0234615, -0.907857, -7.16616), Vector3(-0.0234621, -0.0338023, -0.039259)]
+}
+
+[sub_resource type="Animation" id="Animation_016lt"]
+resource_name = "Changed_3rd"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.0603247, 0.116524), Vector3(0, 0.185, -0.852)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D/Ball:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.0234621, -0.0913974, -0.191467), Vector3(-0.0234615, -0.907857, -7.16616)]
+}
+
+[sub_resource type="Animation" id="Animation_f1cuf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.185, -0.852)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D/Ball:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.0234615, -0.907857, -7.16616)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera3D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -3.14159, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_vm5md"]
+resource_name = "Run"
+length = 1.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.0603247, 0.116524), Vector3(0, 0.0492291, 0.116524)]
+}
+
+[sub_resource type="Animation" id="Animation_ub5vh"]
+resource_name = "Stop"
+length = 10.0
+loop_mode = 1
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4, 8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.0603247, 0.116524), Vector3(0, 0.0559766, 0.116524), Vector3(0, 0.0603247, 0.116524)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 4, 8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -3.14159, 0), Vector3(0, -2.92001, 0), Vector3(0, -3.09796, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qjwfc"]
+_data = {
+"Changed_1ts": SubResource("Animation_0mm5r"),
+"Changed_3rd": SubResource("Animation_016lt"),
+"RESET": SubResource("Animation_f1cuf"),
+"Run": SubResource("Animation_vm5md"),
+"Stop": SubResource("Animation_ub5vh")
+}
+
+[sub_resource type="ImageTexture" id="ImageTexture_e5mci"]
+
+[node name="CharacterBody3D" type="CharacterBody3D" groups=["player"]]
+transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 0, 0.0499266, 0)
+script = ExtResource("1_yh23r")
+moveSpeed = 6.0
+TimeRecoil = 12.0
+FireBall = 3
+
+[node name="dragon_withAnimations" parent="." instance=ExtResource("2_6t54t")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.159957, 0, 0, 0, 1, 0, 0.0584527, 0)
+shape = SubResource("BoxShape3D_p0pym")
+
+[node name="Pivote" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.020489, 0)
+rotation_order = 0
+script = ExtResource("2_v441b")
+
+[node name="Camera3D" type="Camera3D" parent="Pivote"]
+transform = Transform3D(-0.142857, 0, -3.62168e-07, 0, 0.142857, 0, 3.62168e-07, 0, -0.142857, 0, 0.185, -0.852)
+cull_mask = 1048319
+current = true
+fov = 35.7093
+
+[node name="Ball" type="Node3D" parent="Pivote/Camera3D"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.0234615, -0.907857, -7.16616)
+
+[node name="Taker" type="RayCast3D" parent="Pivote/Camera3D"]
+transform = Transform3D(-2.67381, 0.0239799, -0.0206428, -0.0214516, -0.0914454, 2.67235, 0.0232596, 2.67233, 0.0916311, 0.0182994, -0.0510965, -0.0812292)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Pivote"]
+libraries = {
+"": SubResource("AnimationLibrary_qjwfc")
+}
+
+[node name="Animation" type="Timer" parent="Pivote"]
+one_shot = true
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -7.74884e-09, 1, 0, -0.177273, -4.37113e-08, 0, 0.0232473, 0.013425)
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("4_1580u")
+
+[node name="HeltPlayer" type="TextureProgressBar" parent="UI/Control"]
+layout_mode = 0
+offset_right = 278.0
+offset_bottom = 40.0
+value = 50.0
+nine_patch_stretch = true
+texture_under = SubResource("ImageTexture_e5mci")
+texture_progress = SubResource("ImageTexture_e5mci")
+tint_under = Color(0.282353, 0.282353, 0.282353, 1)
+tint_progress = Color(0.54902, 0, 0.0862745, 1)
+
+[node name="FireBall" type="Label" parent="UI/Control"]
+layout_mode = 0
+offset_left = -3.0
+offset_top = 43.0
+offset_right = 49.0
+offset_bottom = 79.0
+theme_override_fonts/font = ExtResource("5_y37mu")
+theme_override_font_sizes/font_size = 30
+text = "hhhh"
+
+[node name="Label" type="Label" parent="UI/Control"]
+layout_mode = 0
+offset_left = 119.0
+offset_top = 6.0
+offset_right = 167.0
+offset_bottom = 42.0
+theme_override_fonts/font = ExtResource("5_y37mu")
+theme_override_font_sizes/font_size = 30
+text = "Vida"
+
+[node name="HUD" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+
+[node name="Crosshair" type="Sprite2D" parent="UI/HUD"]
+position = Vector2(11, 8)
+texture = ExtResource("6_a0du5")
+
+[node name="Interac" type="Label" parent="UI/HUD"]
+visible = false
+layout_mode = 0
+offset_left = -43.0
+offset_top = -38.0
+offset_right = 68.0
+offset_bottom = -12.0
+theme_override_fonts/font = ExtResource("5_y37mu")
+theme_override_font_sizes/font_size = 20
+text = "Interactuar (E)"
+
+[node name="Take" type="Label" parent="UI/HUD"]
+visible = false
+layout_mode = 1
+offset_left = -26.0
+offset_top = -35.0
+offset_right = 58.0
+offset_bottom = -9.0
+theme_override_fonts/font = ExtResource("5_y37mu")
+theme_override_font_sizes/font_size = 20
+text = "Obtener(E)"
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.25, 0, 0, 0, -0.00522687, -0.249945, 0, 0.249945, -0.00522687, 0, 0.286347, 0)
+layers = 256
+texture = ExtResource("6_yjrd2")
+
+[connection signal="timeout" from="Pivote/Animation" to="." method="_on_animation_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://c35yeoge4nlrv"]
+
+[ext_resource type="PackedScene" uid="uid://l4bngfjycl0f" path="res://Assets/Models/structures/stargate.glb" id="1_ok2ck"]
+
+[node name="stargate" instance=ExtResource("1_ok2ck")]

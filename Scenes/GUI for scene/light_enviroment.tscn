@@ -1,0 +1,152 @@
+[gd_scene load_steps=15 format=3 uid="uid://bk1glue40a2cl"]
+
+[ext_resource type="Script" path="res://Scripts/World/world_principal_skys.gd" id="1_g84b1"]
+[ext_resource type="Texture2D" uid="uid://cssai30vedlcw" path="res://Extras/blue-sky.jpg" id="2_tjord"]
+[ext_resource type="Texture2D" uid="uid://dp6nfowdvp5tq" path="res://Extras/360.PNG" id="3_px1ut"]
+[ext_resource type="Texture2D" uid="uid://5w74cyligaj0" path="res://Extras/MidNight.jpg" id="4_iwbsr"]
+[ext_resource type="Texture2D" uid="uid://buta77lp7255q" path="res://Extras/380.jpg" id="5_ywv8f"]
+
+[sub_resource type="Animation" id="Animation_5mey2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.5708, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:light_energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_rcqru"]
+resource_name = "SunRate"
+length = 600.0
+loop_mode = 1
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 151, 452, 600),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [1.0, 0.0, 0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 600),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-1.5708, 0, 0), Vector3(4.71239, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v7c14"]
+_data = {
+"RESET": SubResource("Animation_5mey2"),
+"SunRate": SubResource("Animation_rcqru")
+}
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_2q7jg"]
+panorama = ExtResource("2_tjord")
+
+[sub_resource type="Sky" id="Sky_3s1mm"]
+sky_material = SubResource("PanoramaSkyMaterial_2q7jg")
+process_mode = 1
+
+[sub_resource type="Environment" id="Environment_vwjce"]
+background_mode = 2
+sky = SubResource("Sky_3s1mm")
+tonemap_exposure = 0.67
+tonemap_white = 6.8
+glow_normalized = true
+glow_strength = 1.24
+glow_blend_mode = 1
+glow_hdr_threshold = 1.24
+glow_hdr_luminance_cap = 16.18
+
+[sub_resource type="Animation" id="Animation_1c80b"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:environment:sky:sky_material:panorama")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_tjord")]
+}
+
+[sub_resource type="Animation" id="Animation_k81jy"]
+resource_name = "SkyChange"
+length = 600.0
+loop_mode = 1
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:environment:sky:sky_material:panorama")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 113, 137, 160, 451, 483),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_tjord"), ExtResource("3_px1ut"), ExtResource("4_iwbsr"), ExtResource("5_ywv8f"), ExtResource("3_px1ut"), ExtResource("2_tjord")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2x8uv"]
+_data = {
+"RESET": SubResource("Animation_1c80b"),
+"SkyChange": SubResource("Animation_k81jy")
+}
+
+[node name="LightEnviroment" type="Node3D"]
+script = ExtResource("1_g84b1")
+
+[node name="SunMoon" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -3.61999e-06, 1, 0, -1, -3.61999e-06, 0, 0, 0)
+shadow_enabled = true
+shadow_transmittance_bias = 0.264
+shadow_blur = 1.232
+directional_shadow_blend_splits = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SunMoon"]
+autoplay = "SunRate"
+libraries = {
+"": SubResource("AnimationLibrary_v7c14")
+}
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_vwjce")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="WorldEnvironment"]
+autoplay = "SkyChange"
+libraries = {
+"": SubResource("AnimationLibrary_2x8uv")
+}

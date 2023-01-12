@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://ceeh637u34yps"]
+
+[ext_resource type="PackedScene" uid="uid://bwsbq56j51raf" path="res://Assets/Models/structures/greek_temple.glb" id="1_s4exj"]
+
+[node name="greek_temple" instance=ExtResource("1_s4exj")]
+
+[node name="Object_37" parent="Sketchfab_model/root/GLTF_SceneRootNode/Suzanne_2" index="33"]
+visible = false

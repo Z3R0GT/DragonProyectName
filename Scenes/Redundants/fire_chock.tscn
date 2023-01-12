@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://ml6wxqcssbom"]
+
+[ext_resource type="Gradient" uid="uid://bvomubonad3yi" path="res://Scenes/Redundants/Fire.tres" id="1_5lj7i"]
+[ext_resource type="Script" path="res://Scripts/GamePlay/fire_chock.gd" id="1_kfad0"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_rqjqs"]
+gradient = ExtResource("1_5lj7i")
+use_hdr = true
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_yjrw0"]
+emission_shape = 1
+emission_sphere_radius = 0.2
+direction = Vector3(1, 1, 0)
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_max = 2.0
+angular_velocity_min = -125.23
+angular_velocity_max = 246.38
+scale_min = 0.04
+scale_max = 0.1
+color_ramp = SubResource("GradientTexture1D_rqjqs")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xsnir"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_w5ivr"]
+material = SubResource("StandardMaterial3D_xsnir")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_j3r0m"]
+height = 1.12055
+
+[node name="Area3D" type="Area3D"]
+script = ExtResource("1_kfad0")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(0.714289, 0.69985, 0, -0.69985, 0.714289, 0, 0, 0, 1, 0, 0, 0.00802839)
+amount = 68
+lifetime = 2.0
+preprocess = 0.23
+explosiveness = 0.21
+randomness = 0.29
+fract_delta = false
+process_material = SubResource("ParticleProcessMaterial_yjrw0")
+draw_pass_1 = SubResource("SphereMesh_w5ivr")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-2.48167e-08, -0.558787, 0, 0.567739, -2.44254e-08, 0, 0, 0, 0.48503, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_j3r0m")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

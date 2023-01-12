@@ -1,0 +1,180 @@
+[gd_scene load_steps=3 format=3 uid="uid://ct0yp354wiy5s"]
+
+[ext_resource type="Script" path="res://Scripts/Redundants/settings_menu.gd" id="1_cj0el"]
+[ext_resource type="FontFile" uid="uid://cdeoel5armh63" path="res://Assets/Fonts/TheWildBreathOfZelda-15Lv.ttf" id="2_xf2rk"]
+
+[node name="Control" type="Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_cj0el")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -40.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+color = Color(1, 1, 1, 0.34902)
+
+[node name="TabContainer" type="TabContainer" parent="ColorRect"]
+offset_right = 409.0
+offset_bottom = 473.0
+
+[node name="Video" type="TabBar" parent="ColorRect/TabContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 31.0
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect/TabContainer/Video"]
+offset_right = 410.0
+offset_bottom = 102.0
+
+[node name="Video" type="GridContainer" parent="ColorRect/TabContainer/Video/MarginContainer"]
+offset_right = 410.0
+offset_bottom = 102.0
+columns = 2
+
+[node name="Label" type="Label" parent="ColorRect/TabContainer/Video/MarginContainer/Video"]
+offset_right = 58.0
+offset_bottom = 26.0
+text = "Ver FPS
+"
+
+[node name="CheckButton" type="CheckButton" parent="ColorRect/TabContainer/Video/MarginContainer/Video"]
+offset_left = 366.0
+offset_right = 410.0
+offset_bottom = 24.0
+size_flags_horizontal = 10
+size_flags_vertical = 0
+
+[node name="Volumen" type="TabBar" parent="ColorRect/TabContainer"]
+visible = false
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect/TabContainer/Volumen"]
+offset_right = 410.0
+offset_bottom = 201.0
+
+[node name="Video" type="GridContainer" parent="ColorRect/TabContainer/Volumen/MarginContainer"]
+offset_right = 410.0
+offset_bottom = 201.0
+columns = 2
+
+[node name="Master" type="Label" parent="ColorRect/TabContainer/Volumen/MarginContainer/Video"]
+text = "Volumen Maestro  "
+
+[node name="MasterVol" type="HSlider" parent="ColorRect/TabContainer/Volumen/MarginContainer/Video"]
+custom_minimum_size = Vector2(260, 0)
+min_value = -50.0
+max_value = 0.0
+step = 0.1
+value = -10.0
+
+[node name="Music" type="Label" parent="ColorRect/TabContainer/Volumen/MarginContainer/Video"]
+text = "Volumen musica"
+
+[node name="MusicVol" type="HSlider" parent="ColorRect/TabContainer/Volumen/MarginContainer/Video"]
+custom_minimum_size = Vector2(260, 0)
+min_value = -50.0
+max_value = 0.0
+step = 0.1
+value = -10.0
+
+[node name="SFX" type="Label" parent="ColorRect/TabContainer/Volumen/MarginContainer/Video"]
+text = "Volumen SFX"
+
+[node name="SFXVol" type="HSlider" parent="ColorRect/TabContainer/Volumen/MarginContainer/Video"]
+custom_minimum_size = Vector2(260, 0)
+min_value = -50.0
+max_value = 0.0
+step = 0.1
+value = -10.0
+
+[node name="Controles" type="TabBar" parent="ColorRect/TabContainer"]
+visible = false
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect/TabContainer/Controles"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Video" type="GridContainer" parent="ColorRect/TabContainer/Controles/MarginContainer"]
+offset_right = 351.0
+offset_bottom = 283.0
+columns = 2
+
+[node name="Label" type="Label" parent="ColorRect/TabContainer/Controles/MarginContainer/Video"]
+theme_override_fonts/font = ExtResource("2_xf2rk")
+theme_override_font_sizes/font_size = 32
+text = "Avanzar"
+
+[node name="Label2" type="Label" parent="ColorRect/TabContainer/Controles/MarginContainer/Video"]
+theme_override_fonts/font = ExtResource("2_xf2rk")
+theme_override_font_sizes/font_size = 32
+text = "                             W"
+
+[node name="Label3" type="Label" parent="ColorRect/TabContainer/Controles/MarginContainer/Video"]
+theme_override_fonts/font = ExtResource("2_xf2rk")
+theme_override_font_sizes/font_size = 32
+text = "atras"
+
+[node name="Label4" type="Label" parent="ColorRect/TabContainer/Controles/MarginContainer/Video"]
+theme_override_fonts/font = ExtResource("2_xf2rk")
+theme_override_font_sizes/font_size = 32
+text = "                             S"
+
+[node name="Label5" type="Label" parent="ColorRect/TabContainer/Controles/MarginContainer/Video"]
+theme_override_fonts/font = ExtResource("2_xf2rk")
+theme_override_font_sizes/font_size = 32
+text = "derecha"
+
+[node name="Label6" type="Label" parent="ColorRect/TabContainer/Controles/MarginContainer/Video"]
+theme_override_fonts/font = ExtResource("2_xf2rk")
+theme_override_font_sizes/font_size = 32
+text = "                             A"
+
+[node name="Label7" type="Label" parent="ColorRect/TabContainer/Controles/MarginContainer/Video"]
+theme_override_fonts/font = ExtResource("2_xf2rk")
+theme_override_font_sizes/font_size = 32
+text = "Izquierda"
+
+[node name="Label8" type="Label" parent="ColorRect/TabContainer/Controles/MarginContainer/Video"]
+theme_override_fonts/font = ExtResource("2_xf2rk")
+theme_override_font_sizes/font_size = 32
+text = "                             D
+"
+
+[node name="Label9" type="Label" parent="ColorRect/TabContainer/Controles/MarginContainer/Video"]
+theme_override_fonts/font = ExtResource("2_xf2rk")
+theme_override_font_sizes/font_size = 32
+text = "Saltar"
+
+[node name="Label10" type="Label" parent="ColorRect/TabContainer/Controles/MarginContainer/Video"]
+theme_override_fonts/font = ExtResource("2_xf2rk")
+theme_override_font_sizes/font_size = 32
+text = "                             Space"
+
+[node name="Label11" type="Label" parent="ColorRect/TabContainer/Controles/MarginContainer/Video"]
+theme_override_fonts/font = ExtResource("2_xf2rk")
+theme_override_font_sizes/font_size = 32
+text = "Disparar"
+
+[node name="Label12" type="Label" parent="ColorRect/TabContainer/Controles/MarginContainer/Video"]
+theme_override_fonts/font = ExtResource("2_xf2rk")
+theme_override_font_sizes/font_size = 32
+text = "                             Click"
+
+[node name="Label13" type="Label" parent="ColorRect/TabContainer/Controles/MarginContainer/Video"]
+theme_override_fonts/font = ExtResource("2_xf2rk")
+theme_override_font_sizes/font_size = 32
+text = "Pause"
+
+[node name="Label14" type="Label" parent="ColorRect/TabContainer/Controles/MarginContainer/Video"]
+theme_override_fonts/font = ExtResource("2_xf2rk")
+theme_override_font_sizes/font_size = 32
+text = "                             Esc"

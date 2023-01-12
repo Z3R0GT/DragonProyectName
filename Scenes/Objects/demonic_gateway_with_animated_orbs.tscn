@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://8l6n0rpcoxsf"]
+
+[ext_resource type="PackedScene" uid="uid://dguuynlvh63ex" path="res://Assets/Models/structures/demonic_gateway_with_animated_orbs.glb" id="1_a5qwy"]
+
+[node name="demonic_gateway_with_animated_orbs" instance=ExtResource("1_a5qwy")]

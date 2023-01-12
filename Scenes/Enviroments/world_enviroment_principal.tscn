@@ -1,0 +1,211 @@
+[gd_scene load_steps=28 format=3 uid="uid://g41j7dfbi23q"]
+
+[ext_resource type="PackedScene" uid="uid://bk1glue40a2cl" path="res://Scenes/GUI for scene/light_enviroment.tscn" id="1_2tp6g"]
+[ext_resource type="Script" path="res://Scripts/World/world_enviroment_principalConfigs.gd" id="1_bl2cs"]
+[ext_resource type="PackedScene" uid="uid://b74ev64d6w11s" path="res://Scenes/ScenePlayerEnviroment/Enemy_BodyOnBody.tscn" id="1_eo1mp"]
+[ext_resource type="PackedScene" uid="uid://bgck54m1m6mnb" path="res://Scenes/ScenePlayerEnviroment/Enemy_Shotter.tscn" id="2_s6f8p"]
+[ext_resource type="PackedScene" uid="uid://bu878rp13pbfc" path="res://Scenes/ScenePlayerEnviroment/character_body_3d.tscn" id="3_dpjkj"]
+[ext_resource type="PackedScene" uid="uid://c7al27lvfjdio" path="res://Scenes/GUI for scene/MiniMap.tscn" id="5_vdhkt"]
+[ext_resource type="PackedScene" uid="uid://ci26u06peq2oi" path="res://Scenes/Enviroments/Portal.tscn" id="6_fdm1h"]
+[ext_resource type="PackedScene" uid="uid://d1kct7av834d6" path="res://Scenes/Menus/pause_menu(redudant).tscn" id="7_h57ma"]
+[ext_resource type="PackedScene" uid="uid://ceeh637u34yps" path="res://Scenes/Objects/greek_temple.tscn" id="8_e7v6u"]
+[ext_resource type="PackedScene" uid="uid://blarvn5rion5l" path="res://Assets/Models/structures/temple_entrance.glb" id="9_c34ul"]
+[ext_resource type="PackedScene" uid="uid://c1il7acf1eu0y" path="res://Assets/Models/structures/dark_hole.glb" id="9_emvwa"]
+[ext_resource type="Texture2D" uid="uid://cb3cmfak511j6" path="res://Extras/MapMarker/fantasy_map_symbols_by_yung_romeo_d3dgvbt.png" id="10_smasd"]
+[ext_resource type="PackedScene" uid="uid://l4bngfjycl0f" path="res://Assets/Models/structures/stargate.glb" id="12_hes5y"]
+[ext_resource type="PackedScene" uid="uid://bcj1d18y73066" path="res://Assets/Models/structures/european_and_american_game_scencemagic_portal.glb" id="13_kokn4"]
+[ext_resource type="PackedScene" uid="uid://b0sa8qa142abv" path="res://Assets/Models/structures/stlp-_game_asset.glb" id="14_8slra"]
+[ext_resource type="PackedScene" uid="uid://dguuynlvh63ex" path="res://Assets/Models/structures/demonic_gateway_with_animated_orbs.glb" id="14_xt4am"]
+[ext_resource type="Shader" path="res://Scripts/Shaders/waterShader.gdshader" id="17_a50g6"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_6kko8"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_weppf"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ixehd"]
+size = Vector3(13.5638, 2.06698, 8.25716)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kxtax"]
+size = Vector3(13.9853, 5.26353, 1.27664)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_38xbw"]
+size = Vector3(1, 4.50623, 7.75474)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_emjei"]
+size = Vector3(1.30439, 2.1726, 1.51738)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_4y6px"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_w42ce"]
+seamless = true
+as_normal_map = true
+noise = SubResource("FastNoiseLite_4y6px")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_158ay"]
+render_priority = 0
+shader = ExtResource("17_a50g6")
+shader_parameter/albedo = Color(0.227451, 0.356863, 0.552941, 0.611765)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 0.24
+shader_parameter/metallic_texture_channel = Plane(1, 0, 0, 0)
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/refraction = 0.05
+shader_parameter/refraction_texture_channel = Plane(1, 0, 0, 0)
+shader_parameter/normal_scale = 1.0
+shader_parameter/uv1_scale = Vector3(2, 2, 2)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/texture_normal = SubResource("NoiseTexture2D_w42ce")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ku6qi"]
+material = SubResource("ShaderMaterial_158ay")
+
+[node name="WorldEnviromentPrincipal" type="Node3D"]
+script = ExtResource("1_bl2cs")
+
+[node name="place" type="MeshInstance3D" parent="."]
+transform = Transform3D(200, 0, 0, 0, 1, 0, 0, 0, 200, 0, -0.507014, 0)
+layers = 257
+mesh = SubResource("BoxMesh_6kko8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="place"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="place/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_weppf")
+
+[node name="CharacterBody3D" parent="." groups=["Saved"] instance=ExtResource("3_dpjkj")]
+transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, -4.4745, 0.000674576, -1.78453)
+TimeRecoil = 5.0
+
+[node name="Enemi" type="Node" parent="."]
+
+[node name="EnemiLong" parent="Enemi" groups=["enemi"] instance=ExtResource("1_eo1mp")]
+transform = Transform3D(0.393, 0, 0, 0, 0.29, 0, 0, 0, 0.372, 1.2681, 0.303886, 1.8276)
+TimeRecoil = 10.0
+move = 4.0
+
+[node name="enemy_body" parent="Enemi" instance=ExtResource("2_s6f8p")]
+transform = Transform3D(0.393, 0, 0, 0, 0.29, 0, 0, 0, 0.372, 3.30794, 0.303886, 1.71019)
+moveSpeed = 4.0
+
+[node name="UI" type="CanvasLayer" parent="."]
+process_mode = 3
+
+[node name="MiniMap" parent="UI" instance=ExtResource("5_vdhkt")]
+
+[node name="PauseMenu" parent="UI" instance=ExtResource("7_h57ma")]
+visible = false
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Objects" type="Node" parent="."]
+
+[node name="Takes" type="Node" parent="Objects"]
+
+[node name="dark_hole" parent="Objects/Takes" instance=ExtResource("9_emvwa")]
+transform = Transform3D(-0.000839838, 0, 0.0079558, 0, 0.008, 0, -0.0079558, 0, -0.000839838, 24.7852, -4.32242, -8.79567)
+
+[node name="Structures" type="Node" parent="Objects"]
+
+[node name="temple_entrance" parent="Objects/Structures" instance=ExtResource("9_c34ul")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.13656, 1.05426, -3.24376)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Objects/Structures"]
+transform = Transform3D(0.994149, 0, 0.108017, 0, 1, 0, -0.108017, 0, 0.994149, 0, 0, 0)
+
+[node name="Floor" type="CollisionShape3D" parent="Objects/Structures/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.9648, -0.513223, -6.45037)
+shape = SubResource("BoxShape3D_ixehd")
+
+[node name="L1" type="CollisionShape3D" parent="Objects/Structures/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.4116, 2.76634, -9.72349)
+shape = SubResource("BoxShape3D_kxtax")
+
+[node name="L2" type="CollisionShape3D" parent="Objects/Structures/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.4116, 2.76634, -3.02688)
+shape = SubResource("BoxShape3D_kxtax")
+
+[node name="L3" type="CollisionShape3D" parent="Objects/Structures/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.0825, 4.60507, -4.54937)
+shape = SubResource("BoxShape3D_38xbw")
+
+[node name="greek_temple" parent="Objects/Structures/StaticBody3D" instance=ExtResource("8_e7v6u")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 22.549, -1.27245, -6.31291)
+
+[node name="Sprite3D" type="Sprite3D" parent="Objects/Structures/StaticBody3D/greek_temple"]
+transform = Transform3D(-14.9053, -1.68244, -7.35417e-08, -3.31882e-15, -6.55671e-07, 15, -1.68244, 14.9053, 6.51533e-07, 0.586178, 10.1226, 2.29452)
+layers = 256
+texture = ExtResource("10_smasd")
+hframes = 4
+vframes = 8
+frame = 6
+
+[node name="Portals" type="Node" parent="Objects"]
+
+[node name="Portal" parent="Objects/Portals" instance=ExtResource("6_fdm1h")]
+transform = Transform3D(0.650164, 0, 0.759794, 0, 1, 0, -0.759794, 0, 0.650164, 6.608, 0.0873815, -13.3644)
+Target = NodePath("../../Targets/Pos1")
+player = NodePath("../../../CharacterBody3D")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Objects/Portals/Portal"]
+
+[node name="L1" type="CollisionShape3D" parent="Objects/Portals/Portal/StaticBody3D"]
+transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, -0.0420685, 1.31147, -2.39594)
+shape = SubResource("BoxShape3D_emjei")
+
+[node name="L2" type="CollisionShape3D" parent="Objects/Portals/Portal/StaticBody3D"]
+transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, -0.0420656, 1.31147, 2.35795)
+shape = SubResource("BoxShape3D_emjei")
+
+[node name="stargate" parent="Objects/Portals" instance=ExtResource("12_hes5y")]
+transform = Transform3D(0.025, 0, 0, 0, 0.025, 0, 0, 0, 0.025, -5.79851, 2.975, -16.0956)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Objects/Portals/stargate"]
+transform = Transform3D(40, 0, 0, 0, 28.9544, 27.5979, 0, -27.5979, 28.9544, 3.13596, -5.78387, 24.3562)
+light_color = Color(0.694118, 0.168627, 0.27451, 1)
+light_energy = 6.556
+light_indirect_energy = 9.471
+light_volumetric_fog_energy = 5.444
+light_specular = 6.278
+shadow_enabled = true
+omni_range = 5.07175
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Objects/Portals/stargate"]
+transform = Transform3D(40, 0, 0, 0, 28.9544, 27.5979, 0, -27.5979, 28.9544, 3.13596, -89.0671, -8.62122)
+light_color = Color(0.694118, 0.168627, 0.27451, 1)
+light_energy = 6.556
+light_indirect_energy = 9.471
+light_volumetric_fog_energy = 5.444
+light_specular = 6.278
+shadow_enabled = true
+omni_range = 5.07175
+
+[node name="islandGate" parent="Objects/Portals" instance=ExtResource("13_kokn4")]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, -17.3965, 3.00932, -9.17438)
+
+[node name="demonic_gateway_with_animated_orbs" parent="Objects/Portals" instance=ExtResource("14_xt4am")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -10.5671, 1.57732, -8.439)
+
+[node name="Targets" type="Node" parent="Objects"]
+
+[node name="Pos1" type="Node3D" parent="Objects/Targets"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0756606, 12.1689)
+
+[node name="Iluminations" type="Node" parent="Objects"]
+
+[node name="General" type="Node" parent="Objects"]
+
+[node name="LightEnviroment" parent="Objects/General" instance=ExtResource("1_2tp6g")]
+transform = Transform3D(1, 0, 0, 0, 0.947216, -0.320596, 0, 0.320596, 0.947216, 0, 6.07557, 0)
+
+[node name="others" type="Node" parent="Objects"]
+
+[node name="stlp-_game_asset" parent="Objects/others" instance=ExtResource("14_8slra")]
+transform = Transform3D(0.280757, 0.105714, 0, -0.105714, 0.280757, 0, 0, 0, 0.3, -0.525244, -0.737656, -9.50409)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/others"]
+transform = Transform3D(17.3801, 0, 0, 0, 1, 0, 0, 0, 14.8645, 0, 0.112061, 21.1053)
+mesh = SubResource("PlaneMesh_ku6qi")

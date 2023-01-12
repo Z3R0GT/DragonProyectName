@@ -1,0 +1,59 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1kct7av834d6"]
+
+[ext_resource type="Script" path="res://Scripts/GUI/pause_menu(redudant).gd" id="1_13xxx"]
+[ext_resource type="FontFile" uid="uid://cdeoel5armh63" path="res://Assets/Fonts/TheWildBreathOfZelda-15Lv.ttf" id="2_gkijo"]
+
+[node name="PauseMenu(Redudant)" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_13xxx")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.741176, 0.2, 0.243137, 0.643137)
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("2_gkijo")
+theme_override_font_sizes/font_size = 100
+text = "Juego Pausado"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = -282.0
+offset_right = 115.0
+offset_bottom = -181.0
+grow_vertical = 0
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+offset_right = 116.0
+offset_bottom = 31.0
+text = "Continuar"
+
+[node name="Button2" type="Button" parent="VBoxContainer"]
+offset_top = 51.0
+offset_right = 116.0
+offset_bottom = 82.0
+text = "Configuración"
+
+[node name="Button3" type="Button" parent="VBoxContainer"]
+offset_top = 102.0
+offset_right = 116.0
+offset_bottom = 133.0
+text = "Salir"
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button3" to="." method="_on_button_3_pressed"]

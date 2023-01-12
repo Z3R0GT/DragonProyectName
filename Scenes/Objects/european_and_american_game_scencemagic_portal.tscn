@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://dmgl22y4g53xp"]
+
+[ext_resource type="PackedScene" uid="uid://bcj1d18y73066" path="res://Assets/Models/structures/european_and_american_game_scencemagic_portal.glb" id="1_173aw"]
+
+[node name="european_and_american_game_scencemagic_portal" instance=ExtResource("1_173aw")]

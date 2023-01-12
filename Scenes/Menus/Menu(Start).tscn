@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://moqaqltd8354"]
+
+[ext_resource type="Script" path="res://Scripts/GUI/Menu(Start).gd" id="1_2xaky"]
+
+[node name="Menu" type="Node"]
+script = ExtResource("1_2xaky")
