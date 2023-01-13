@@ -2,6 +2,7 @@ extends CharacterBody3D
 
 const JUMP_VELOCITY = 4.5
 
+#Gravedad por default del motor
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 
